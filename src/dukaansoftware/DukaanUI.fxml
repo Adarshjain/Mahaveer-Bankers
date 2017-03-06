@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dukaansoftware.DukaanSoftware">
+   <children>
+      <GridPane layoutX="12.0" layoutY="88.0" prefHeight="297.0" prefWidth="572.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" onAction="#addbutton" prefHeight="50.0" prefWidth="100.0" text="Add" />
+            <Button mnemonicParsing="false" onAction="#editbutton" prefHeight="50.0" prefWidth="100.0" text="Edit" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onAction="#viewButton" prefHeight="50.0" prefWidth="100.0" text="View All" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#viewLoan" prefHeight="50.0" prefWidth="100.0" text="View Loan" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#viewInterest" prefHeight="50.0" prefWidth="100.0" text="View Interest" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#viewIntInc" prefHeight="50.0" prefWidth="100.0" text="Interest Income" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#viewSelect" prefHeight="50.0" prefWidth="100.0" text="View Expenses" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#backup" prefHeight="50.0" prefWidth="100.0" text="Backup" GridPane.rowIndex="3" />
+            <!--<Button mnemonicParsing="false" onAction="#exportAll" prefHeight="50.0" prefWidth="100.0" text="Export All" GridPane.columnIndex="1" GridPane.rowIndex="3" />-->
+            <Button mnemonicParsing="false" onAction="#addBeneficiary" prefHeight="50.0" prefWidth="100.0" text="Add Beneficiary" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" onAction="#viewBeneficiary" prefHeight="50.0" prefWidth="110.0" text="View Beneficiary" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <Label layoutX="224.0" layoutY="24.0" text="Mahaveer Bankers">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

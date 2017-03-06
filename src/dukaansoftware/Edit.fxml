@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dukaansoftware.EditController">
+   <children>
+      <ScrollPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="892.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="588.0" prefWidth="890.0">
+               <children>
+                  <Label layoutX="425.0" layoutY="21.0" text="EDIT">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="datepicker" layoutX="256.0" layoutY="63.0" onAction="#dateselected" onInputMethodTextChanged="#dateselected" prefHeight="23.0" prefWidth="151.0" />
+                  <GridPane fx:id="DataGrid" alignment="CENTER" hgap="5.0" layoutX="37.0" layoutY="93.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="630.0" vgap="5.0">
+                     <children>
+                        <Label text="Loan(GL)" GridPane.rowIndex="3" />
+                        <TextField fx:id="OpeningBalance" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" GridPane.columnIndex="1" />
+                        <Label prefHeight="17.0" prefWidth="110.0" text="Opening Balance" />
+                        <Label text="Loans" GridPane.rowIndex="1" />
+                        <Label text="Interest Received from Pawn" GridPane.rowIndex="2" />
+                        <TextField fx:id="Loan1" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="Interest1" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="Loan2" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label text="Loans" GridPane.columnIndex="2">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </Label>
+                        <TextField fx:id="Loan3" alignment="CENTER_RIGHT" GridPane.columnIndex="3" />
+                        <TextField fx:id="Drawings" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <TextField fx:id="Interest2" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <TextField fx:id="ExtraName1" GridPane.rowIndex="5" />
+                        <TextField fx:id="ExtraName2" GridPane.rowIndex="6" />
+                        <TextField fx:id="ExtraName3" GridPane.rowIndex="7" />
+                        <TextField fx:id="ExtraName4" GridPane.rowIndex="8" />
+                        <TextField fx:id="ExtraAmt2" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="ExtraAmt3" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextField fx:id="ExtraAmt4" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <TextField fx:id="ExtraName6" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <TextField fx:id="ExtraAmt6" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <TextField fx:id="ExtraName7" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <TextField fx:id="ExtraName8" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <TextField fx:id="ExtraName9" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        <TextField fx:id="ExtraAmt7" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <TextField fx:id="ExtraAmt8" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <TextField fx:id="ExtraAmt9" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                        <TextField fx:id="ExtraName10" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                        <TextField fx:id="ExtraAmt10" alignment="CENTER_RIGHT" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                        <TextField fx:id="ExtraAmt1" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label text="Interest Received from Pawn(GL)" GridPane.rowIndex="4" />
+                        <Label text="Drawings" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <TextField fx:id="ExtraName5" GridPane.rowIndex="9" />
+                        <TextField fx:id="ExtraAmt5" alignment="CENTER_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <Button minHeight="50.0" minWidth="100.0" mnemonicParsing="false" onAction="#doneButton" text="Save" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="calculateButton" minHeight="50.0" minWidth="100.0" mnemonicParsing="false" onAction="#calculate" text="Calculate" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" />
+                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="200.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="25.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="25.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="25.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="25.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="25.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="25.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="25.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="25.0" valignment="CENTER" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+                  <Pane layoutX="11.0" layoutY="440.0" prefHeight="148.0" prefWidth="855.0">
+                     <children>
+                        <Line endX="730.0" layoutX="114.0" layoutY="18.0" startX="-100.0" />
+                        <Line endX="730.0" layoutX="114.0" layoutY="129.0" startX="-100.0" />
+                        <Line endX="730.0" layoutX="112.0" layoutY="93.0" startX="-100.0" />
+                        <Label layoutX="41.0" layoutY="99.0" text="Closing Balance" />
+                        <TextField fx:id="closingBalance1" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" layoutX="231.0" layoutY="30.0" prefHeight="25.0" prefWidth="200.0" />
+                        <TextField fx:id="closingBalance2" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" layoutX="231.0" layoutY="98.0" prefHeight="25.0" prefWidth="200.0" />
+                        <TextField fx:id="closingBalance4" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" layoutX="643.0" layoutY="30.0" prefWidth="200.0" />
+                        <TextField fx:id="closingBalance5" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" layoutX="643.0" layoutY="62.0" prefWidth="200.0" />
+                        <TextField fx:id="closingBalance3" alignment="CENTER_RIGHT" editable="false" focusTraversable="false" layoutX="643.0" layoutY="98.0" prefWidth="200.0" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
