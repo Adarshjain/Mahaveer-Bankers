@@ -47,7 +47,7 @@ public class DisplayuiController implements Initializable {
     Double OpeningBalanceD = 0.00,Loan1D = 0.00,Interest1D = 0.00,Loan2D = 0.00,Interest2D = 0.00,Loan3D = 0.00,DrawingsD = 0.00,
             ExtraAmt1D = 0.00,ExtraAmt2D = 0.00,ExtraAmt3D = 0.00,ExtraAmt4D = 0.00,ExtraAmt5D = 0.00,ExtraAmt6D = 0.00,ExtraAmt7D = 0.00,ExtraAmt8D = 0.00,ExtraAmt9D = 0.00,ExtraAmt10D = 0.00,
             closingbalD = 0.00;
-    String currDate = "";
+    String currDate = "",Date1,Date2;
     
     int n = 0;
 
@@ -59,13 +59,21 @@ public class DisplayuiController implements Initializable {
      * @param rb
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb) {   
+    }
+    
+    public void setString(String d1, String d2){
+        Date1 = d1;
+        Date2 = d2;
+    }
+
+    public void display(){
         try{
             Class.forName("org.sqlite.JDBC");
             try (Connection con = DriverManager.getConnection("jdbc:sqlite:mahaveerbankers.db")) {
                 Statement stat = con.createStatement();
                 
-                String q = "SELECT * FROM data ORDER BY date ASC";
+                String q = "SELECT * FROM data WHERE date BETWEEN \"" + Date1 + "\" AND \"" + Date2 + "\" ORDER BY date ASC";
                 ResultSet rs = stat.executeQuery(q);
                 
                 Boolean first = true;
@@ -80,14 +88,17 @@ public class DisplayuiController implements Initializable {
                             Line x1 = new Line();
                             x1.setEndX(500);
                             gridPane.getRowConstraints().add(new RowConstraints(1));
-                            gridPane.add(x, 0, n++);
+                            n = n + 1;
+                            gridPane.add(x, 0, n);
                             gridPane.getRowConstraints().add(new RowConstraints(20));
-                            gridPane.addRow(n++, new Label("Date"),
+                            n = n + 1;
+                            gridPane.addRow(n, new Label("Date"),
                                                  new Label("Particulars"),
                                                 new Label("Release"),
                                                 new Label("Loan"));
                             gridPane.getRowConstraints().add(new RowConstraints(1));
-                            gridPane.add(x1, 0, n++);
+                            n = n + 1;
+                            gridPane.add(x1, 0, n);
                         }else{
                             populate();
                         }
@@ -170,21 +181,12 @@ public class DisplayuiController implements Initializable {
         }
     }
 
-
+    
     private void populate(){
         
         String closebal[] = calculate();
 
-        // <editor-fold defaultstate="collapsed" desc="Labels">
-        Label Empty10 = new Label("");
-        Label Empty11 = new Label("");
-        Label Empty12 = new Label("");
-        Label Empty14 = new Label("");
-        Label Empty15 = new Label("");
-        Label Empty16 = new Label("");
-        Label Empty17 = new Label("");
-        Label Empty18 = new Label("");
-        Label Empty19 = new Label("");       
+        // <editor-fold defaultstate="collapsed" desc="Labels">       
         Label closingbalL = new Label(closingbal);
         Label closingBa0L = new Label(closebal[0]);        
         Label closingBa1L = new Label(closebal[1]);  
@@ -198,125 +200,144 @@ public class DisplayuiController implements Initializable {
         gridPane.getRowConstraints().add(new RowConstraints(20));
         Label OpenBalNL = new Label("Opening Balance");
         Label OpeningBalanceL = new Label(OpeningBalance);
-        gridPane.addRow(n++, date,OpenBalNL,OpeningBalanceL);
+        n = n + 1;
+        gridPane.addRow(n, date,OpenBalNL,OpeningBalanceL);
         if(!(Loan1 == null)){
             gridPane.getRowConstraints().add(new RowConstraints(20));
             Label Loan1NL = new Label("Loans");
             Label Loan1L = new Label(Loan1);
-            Label Empty1 = new Label("");
-            gridPane.addRow(n++, Empty1,Loan1NL,Loan1L);
+        n = n + 1;
+            gridPane.addRow(n);
+            gridPane.addColumn(1, Loan1NL);
+            gridPane.addColumn(2, Loan1L);
         }
         if(!(Interest1 == null)){
             gridPane.getRowConstraints().add(new RowConstraints(20));
-            Label Empty2 = new Label("");
             Label Interest1NL = new Label("Interest");
             Label Interest1L = new Label(Interest1);
-            gridPane.addRow(n++, Empty2,Interest1NL,Interest1L);
+        n = n + 1;
+            gridPane.addRow(n);
+            gridPane.addColumn(1, Interest1NL);
+            gridPane.addColumn(2, Interest1L);
         }
         if(!(Loan2 == null)){
             gridPane.getRowConstraints().add(new RowConstraints(20));
-            Label Empty3 = new Label("");
             Label Loan2NL = new Label("Loans(GL)");
             Label Loan2L = new Label(Loan2);
-            gridPane.addRow(n++, Empty3,Loan2NL,Loan2L);
+        n = n + 1;
+            gridPane.addRow(n);
+            gridPane.addColumn(1, Loan2NL);
+            gridPane.addColumn(2, Loan2L);
         }
         if(!(Interest2 == null)){
             gridPane.getRowConstraints().add(new RowConstraints(20));
-            Label Empty4 = new Label("");
             Label Interest2NL = new Label("Interest");
             Label Interest2L = new Label(Interest2);
-            gridPane.addRow(n++, Empty4,Interest2NL,Interest2L);
+        n = n + 1;
+            gridPane.addRow(n);
+            gridPane.addColumn(1, Interest2NL);
+            gridPane.addColumn(2, Interest2L);
         }
         if(!(ExtraAmt1 == null)){
             gridPane.getRowConstraints().add(new RowConstraints(20));
-            Label Empty5 = new Label("");
             Label ExtraAmt1L = new Label(ExtraAmt1);
             Label ExtraName1L = new Label(ExtraName1);
-            gridPane.addRow(n++, Empty5,ExtraName1L,ExtraAmt1L);
+        n = n + 1;
+            gridPane.addRow(n);
+            gridPane.addColumn(1, ExtraName1L);
+            gridPane.addColumn(2, ExtraAmt1L);
         }
         if(!(ExtraAmt2 == null)){
             gridPane.getRowConstraints().add(new RowConstraints(20));
-            Label Empty6 = new Label("");
             Label ExtraAmt2L = new Label(ExtraAmt2);
             Label ExtraName2L = new Label(ExtraName2);
-            gridPane.addRow(n++, Empty6,ExtraName2L,ExtraAmt2L);
+        n = n + 1;
+            gridPane.addRow(n);
+            gridPane.addColumn(1, ExtraName2L);
+            gridPane.addColumn(2, ExtraAmt2L);
         }
         if(!(ExtraAmt3 == null)){
             gridPane.getRowConstraints().add(new RowConstraints(20));
-            Label Empty7 = new Label("");
             Label ExtraAmt3L = new Label(ExtraAmt3);
             Label ExtraName3L = new Label(ExtraName3);
-            gridPane.addRow(n++, Empty7,ExtraName3L,ExtraAmt3L);
+        n = n + 1;
+            gridPane.addRow(n);
+            gridPane.addColumn(1, ExtraName3L);
+            gridPane.addColumn(2, ExtraAmt3L);
         }
         if(!(ExtraAmt4 == null)){
             gridPane.getRowConstraints().add(new RowConstraints(20));
-            Label Empty8 = new Label("");
             Label ExtraAmt4L = new Label(ExtraAmt4);
             Label ExtraName4L = new Label(ExtraName4);
-            gridPane.addRow(n++, Empty8,ExtraName4L,ExtraAmt4L);
+        n = n + 1;
+            gridPane.addRow(n);
+            gridPane.addColumn(1, ExtraName4L);
+            gridPane.addColumn(2, ExtraAmt4L);
         }
         if(!(ExtraAmt5 == null)){
             gridPane.getRowConstraints().add(new RowConstraints(20));
-            Label Empty9 = new Label("");
             Label ExtraAmt5L = new Label(ExtraAmt5);
             Label ExtraName5L = new Label(ExtraName5);
-            gridPane.addRow(n++, Empty9,ExtraName5L,ExtraAmt5L);
+        n = n + 1;
+            gridPane.addRow(n);
+            gridPane.addColumn(1, ExtraName5L);
+            gridPane.addColumn(2, ExtraAmt5L);
         }
         if (!(Loan3 == null)) {
             gridPane.getRowConstraints().add(new RowConstraints(20));
-            Label Empty20 = new Label("");
-            Label Empty21 = new Label("");
             Label Loan3NL = new Label("Loans");
             Label Loan3L = new Label(Loan3);
-            gridPane.addRow(n++, Empty20,Loan3NL,Empty21,Loan3L);
+        n = n + 1;
+            gridPane.add(Loan3NL,1,n);
+            gridPane.add(Loan3L,3,n);
         }
         if (!(Drawings == null)) {
             gridPane.getRowConstraints().add(new RowConstraints(20));
-            Label Empty22 = new Label("");
-            Label Empty23 = new Label("");
             Label DrawingsNL = new Label("Drawings");
             Label DrawingsL = new Label(Drawings);
-            gridPane.addRow(n++, Empty22,DrawingsNL,Empty23,DrawingsL);
+        n = n + 1;
+            gridPane.add(DrawingsNL,1,n);
+            gridPane.add(DrawingsL,3,n);
         }
         if (!(ExtraAmt6 == null)) {
             gridPane.getRowConstraints().add(new RowConstraints(20));
-            Label Empty24 = new Label("");
-            Label Empty25 = new Label("");
             Label ExtraAmt6L = new Label(ExtraAmt6);
             Label ExtraName6L = new Label(ExtraName6);
-            gridPane.addRow(n++, Empty24,ExtraName6L,Empty25,ExtraAmt6L);
+        n = n + 1;
+            gridPane.add(ExtraName6L,1,n);
+            gridPane.add(ExtraAmt6L,3,n);
         }
         if (!(ExtraAmt7 == null)) {
             gridPane.getRowConstraints().add(new RowConstraints(20));
-            Label Empty26 = new Label("");
-            Label Empty27 = new Label("");
             Label ExtraAmt7L = new Label(ExtraAmt7);
             Label ExtraName7L = new Label(ExtraName7);
-            gridPane.addRow(n++, Empty26,ExtraName7L,Empty27,ExtraAmt7L);
+        n = n + 1;
+            gridPane.add(ExtraName7L,1,n);
+            gridPane.add(ExtraAmt7L,3,n);
         }
         if (!(ExtraAmt8 == null)) {
             gridPane.getRowConstraints().add(new RowConstraints(20));
-            Label Empty28 = new Label("");
-            Label Empty29 = new Label("");
             Label ExtraAmt8L = new Label(ExtraAmt8);
             Label ExtraName8L = new Label(ExtraName8);
-            gridPane.addRow(n++, Empty28,ExtraName8L,Empty29,ExtraAmt8L);
+        n = n + 1;
+            gridPane.add(ExtraName8L,1,n);
+            gridPane.add(ExtraAmt8L,3,n);
         }
         if (!(ExtraAmt9 == null)) {
             gridPane.getRowConstraints().add(new RowConstraints(20));
-            Label Empty30 = new Label("");
-            Label Empty31 = new Label("");
             Label ExtraAmt9L = new Label(ExtraAmt9);
             Label ExtraName9L = new Label(ExtraName9);
-            gridPane.addRow(n++, Empty30,ExtraName9L,Empty31,ExtraAmt9L);
+        n = n + 1;
+            gridPane.add(ExtraName9L,1,n);
+            gridPane.add(ExtraAmt9L,3,n);
         }
         if (!(ExtraAmt10 == null)) {
             gridPane.getRowConstraints().add(new RowConstraints(20));
-            Label Empty32 = new Label("");
-            Label Empty33 = new Label("");
             Label ExtraAmt10L = new Label(ExtraAmt10);
             Label ExtraName10L = new Label(ExtraName10);
-            gridPane.addRow(n++, Empty32,ExtraName10L,Empty33,ExtraAmt10L);
+        n = n + 1;
+            gridPane.add(ExtraName10L,1,n);
+            gridPane.add(ExtraAmt10L,3,n);
         }
         Line x = new Line();
         x.setEndX(500);
@@ -324,31 +345,38 @@ public class DisplayuiController implements Initializable {
         x1.setEndX(500);
         Line x2 = new Line();
         x2.setEndX(500);
-        gridPane.getRowConstraints().add(new RowConstraints(1));
-        gridPane.add(x, 0, n++);
+        gridPane.getRowConstraints().add(new RowConstraints(10));
+        n=n+1;
+        gridPane.add(x, 0, n);
         gridPane.getRowConstraints().add(new RowConstraints(20));
-        gridPane.addRow(n++, Empty10,Empty11,closingBa0L,closingBa1L);
+        n=n+1;
+        gridPane.add(closingBa0L,2,n);
+        gridPane.add(closingBa1L,3,n);
         gridPane.getRowConstraints().add(new RowConstraints(20));
-        gridPane.addRow(n++, closing,Empty15,Empty16,closingbalL);
-        gridPane.getRowConstraints().add(new RowConstraints(1));
-        gridPane.add(x1, 0, n++);
-        gridPane.getRowConstraints().add(new RowConstraints(25));
-        gridPane.addRow(n++, Empty14,Empty18,closing0copy,closing0copy2);
-        gridPane.getRowConstraints().add(new RowConstraints(1));
-        gridPane.add(x2, 0, n++);
-        
-        
-        gridPane.addRow(n++);
+        n=n+1;
+        gridPane.add(closing,0,n);
+        gridPane.add(closingbalL,3,n);
+        gridPane.getRowConstraints().add(new RowConstraints(10));
+        n=n+1;
+        gridPane.add(x1, 0, n);
+        gridPane.getRowConstraints().add(new RowConstraints(20));
+        n=n+1;
+        gridPane.add(closing0copy,2,n);
+        gridPane.add(closing0copy2,3,n);
+        gridPane.getRowConstraints().add(new RowConstraints(10));
+        n=n+1;
+        gridPane.add(x2, 0, n);
+        n=n+1;
+        gridPane.addRow(n);
         gridPane.getRowConstraints().add(new RowConstraints(15));
-        
-        //</editor-fold>
+//</editor-fold>
         
         clear();
        
     }
 
     private String[] calculate() {
-        // <editor-fold defaultstate="collapsed" desc="Fetcch and Calculate">
+        // <editor-fold defaultstate="collapsed" desc="Fetch and Calculate">
         if (!(OpeningBalance == null)) {
             OpeningBalanceD = Double.parseDouble(OpeningBalance);
             OpeningBalance = doubledecimal(OpeningBalanceD);
