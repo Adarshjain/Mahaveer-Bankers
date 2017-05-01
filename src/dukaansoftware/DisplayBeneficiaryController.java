@@ -39,6 +39,7 @@ public class DisplayBeneficiaryController implements Initializable {
     Double creditT = 0.00,debitT = 0.00;
     int n = 0;
     String Selector,date = "";
+    String Date1,Date2;
 
 
     /**
@@ -76,7 +77,7 @@ public class DisplayBeneficiaryController implements Initializable {
                 
                 label.setText(Selector);
                 
-                String q = "SELECT * FROM beneficiary Where beneficiary='" + Selector + "' ORDER BY date ASC";
+                String q = "SELECT * FROM beneficiary Where (beneficiary='" + Selector + "') AND date BETWEEN \"" + Date1 + "\" AND \"" + Date2 + "\" ORDER BY date ASC";
                 ResultSet rs = stat.executeQuery(q);
                 
                 while (rs.next()) {
@@ -136,8 +137,10 @@ public class DisplayBeneficiaryController implements Initializable {
         }
     }
         
-    public void setString(String selector){
+    public void setString(String selector,String d1, String d2){
         Selector = selector;
+        Date1 = d1;
+        Date2 = d2;
     }
     
     private String doubledecimal(Double doublenum) {

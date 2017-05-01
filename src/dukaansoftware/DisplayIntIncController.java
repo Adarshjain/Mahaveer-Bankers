@@ -35,6 +35,7 @@ public class DisplayIntIncController implements Initializable {
     
     int n = 0;
     Double total = 0.00;
+    String Date1,Date2;
     
     /**
      * Initializes the controller class.
@@ -42,13 +43,15 @@ public class DisplayIntIncController implements Initializable {
      * @param rb
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
+    public void initialize(URL url, ResourceBundle rb) {    
+    }    
+    
+    public void display(){
         try {
             Class.forName("org.sqlite.JDBC");
             try (Connection con = DriverManager.getConnection("jdbc:sqlite:mahaveerbankers.db")) {
                 Statement stat = con.createStatement();
-                String q = "SELECT * FROM data Where name='Interest Income' or name='Interest Income (GL)' ORDER BY date ASC";
+                String q = "SELECT * FROM data Where (name='Interest Income' or name='Interest Income (GL)') AND date BETWEEN \"" + Date1 + "\" AND \"" + Date2 + "\" ORDER BY date ASC";
                 ResultSet rs = stat.executeQuery(q);
                 
                 while(rs.next()){
@@ -80,10 +83,13 @@ public class DisplayIntIncController implements Initializable {
             
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(DisplayIntIncController.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-            
-            
-    }    
+        }
+    }
+    
+    public void setString(String d1, String d2){
+        Date1 = d1;
+        Date2 = d2;
+    }
     
     private String doubledecimal(Double doublenum) {
         DecimalFormat df = new DecimalFormat("0.00");

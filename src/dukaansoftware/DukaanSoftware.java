@@ -35,80 +35,42 @@ public class DukaanSoftware extends Application {
     
     public void addbutton() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("NewBill.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Add Data");
-        stage.setScene(new Scene(root,902,590));
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(primaryStage);
-        stage.setMaximized(true);
-        stage.show();    
+        launchIt("Add Data",root);
     }
     
     public void editbutton() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Edit.fxml"));
+        launchIt("Edit Data",root);
+    }
+    
+    private void launchIt(String title,Parent root){
         Stage stage = new Stage();
-        stage.setTitle("Edit Data");
+        stage.setTitle(title);
         stage.setScene(new Scene(root,902,590));
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.initOwner(primaryStage);
         stage.setMaximized(true);
-        stage.show();    
+        stage.show();
     }
     
     public void viewButton() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Displayui.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Mahaveer Bankers");
-        stage.setScene(new Scene(root,600,400));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(primaryStage);
-        stage.setMaximized(true);
-        stage.show();   
+        display("DisplayUI"); 
     }
     
     public void viewLoan() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Displayloan.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Mahaveer Bankers");
-        stage.setScene(new Scene(root,600,400));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(primaryStage);
-        stage.setMaximized(true);
-        stage.show();   
-        
+        display("Displayloan");
     }
     
     public void viewInterest() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("DisplayInterestRC.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Mahaveer Bankers");
-        stage.setScene(new Scene(root,600,400));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(primaryStage);
-        stage.setMaximized(true);
-        stage.show();   
-        
+        display("DisplayInterestRC");
     }
     
     public void viewIntInc()  throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("DisplayIntInc.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Mahaveer Bankers");
-        stage.setScene(new Scene(root,600,400));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(primaryStage);
-        stage.setMaximized(true);
-        stage.show();   
+        display("DisplayIntInc");
     }
     
     public void viewSelect() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("DisplaySelect.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Mahaveer Bankers");
-        stage.setScene(new Scene(root,200,100));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(primaryStage);
-        stage.show();
+        display("DisplaySelect");
     }
     
     
@@ -165,13 +127,11 @@ public class DukaanSoftware extends Application {
     }
     
     public void viewBeneficiary() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("SelectBeneficiary.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Mahaveer Bankers");
-        stage.setScene(new Scene(root,200,100));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(primaryStage);
-        stage.show();
+        display("SelectBeneficiary");        
+    }
+    
+    public void compare() throws IOException{
+        display("Compare");
     }
     
     /**
@@ -181,4 +141,16 @@ public class DukaanSoftware extends Application {
         launch(args);
     }
     
+    public void display(String title) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("DateRange.fxml"));
+        Parent root = (Parent) loader.load();
+        DateRangeController controller = loader.getController();
+        controller.setString(title);
+        Stage stage = new Stage();
+        stage.setTitle("Mahaveer Bankers");
+        stage.setScene(new Scene(root,500,150));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(primaryStage);
+        stage.show();
+    }
 }

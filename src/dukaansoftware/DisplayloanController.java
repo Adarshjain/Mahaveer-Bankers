@@ -34,6 +34,7 @@ public class DisplayloanController implements Initializable {
     String Loan1,Loan2,Loan3;
     Double LoanTotal = 0.00,Loan3Total = 0.00,closingBaL = 0.00;
     String currMonth = "",currDate = "";
+    String Date1,Date2;
     int n = 0;
 
     /**
@@ -43,11 +44,15 @@ public class DisplayloanController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+    } 
+    
+    public void display(){
         try {
             Class.forName("org.sqlite.JDBC");
             try (Connection con = DriverManager.getConnection("jdbc:sqlite:mahaveerbankers.db")) {
                 Statement stat = con.createStatement();
-                String q = "SELECT * FROM data Where place='loan1' or place='loan2'or place='loan3' ORDER BY date ASC";
+                String q = "SELECT * FROM data Where (place='loan1' or place='loan2'or place='loan3') AND date BETWEEN \"" + Date1 + "\" AND \"" + Date2 + "\" ORDER BY date ASC";
                 ResultSet rs = stat.executeQuery(q);
                 Boolean first = true,firstMonth = true;
                 
@@ -111,7 +116,12 @@ public class DisplayloanController implements Initializable {
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(DisplayloanController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
+    }
+    public void setString(String d1, String d2){
+        Date1 = d1;
+        Date2 = d2;
+    }
+
     
     private void populate(){
         

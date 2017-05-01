@@ -28,6 +28,7 @@ public class DisplaySelectController implements Initializable {
     
     @FXML
     ComboBox comboBox;
+    String Date1,Date2;
 
     /**
      * Initializes the controller class.
@@ -37,7 +38,12 @@ public class DisplaySelectController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         comboBox.getItems().addAll("Electricity","Stationary & Postage","Audit Fees","Licence & Taxes","Salary","Telephone Expenses","Advance Tax","Drawings","Income Tax");
-    }   
+    }
+    
+    public void setString(String d1, String d2){
+        Date1 = d1;
+        Date2 = d2;
+    }
     
     public void go() throws IOException{
         
@@ -46,7 +52,7 @@ public class DisplaySelectController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("DisplayCommon.fxml"));
             Parent root = (Parent) loader.load();
             DisplayCommonController controller = loader.getController();
-            controller.setString(x);
+            controller.setString(x,Date1,Date2);
             controller.display();
             Stage stage = new Stage();
             stage.setTitle(x);

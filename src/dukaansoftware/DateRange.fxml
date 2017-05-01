@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="100.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="dukaansoftware.DateRangeController">
+   <children>
+      <DatePicker fx:id="date1" layoutX="14.0" layoutY="38.0" promptText="From" />
+      <DatePicker fx:id="date2" layoutX="201.0" layoutY="38.0" promptText="To" />
+      <Button layoutX="404.0" layoutY="38.0" mnemonicParsing="false" onAction="#go" prefHeight="25.0" prefWidth="55.0" text="Go" />
+      <TextField fx:id="fyear" layoutX="127.0" layoutY="98.0" />
+      <Button layoutX="288.0" layoutY="98.0" mnemonicParsing="false" onAction="#fyeargo" prefWidth="55.0" text="Go" />
+   </children>
+</AnchorPane>

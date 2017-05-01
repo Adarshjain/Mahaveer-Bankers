@@ -34,6 +34,7 @@
             <!--<Button mnemonicParsing="false" onAction="#exportAll" prefHeight="50.0" prefWidth="100.0" text="Export All" GridPane.columnIndex="1" GridPane.rowIndex="3" />-->
             <Button mnemonicParsing="false" onAction="#addBeneficiary" prefHeight="50.0" prefWidth="100.0" text="Add Beneficiary" GridPane.columnIndex="2" />
             <Button mnemonicParsing="false" onAction="#viewBeneficiary" prefHeight="50.0" prefWidth="110.0" text="View Beneficiary" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#compare" prefHeight="50.0" prefWidth="100.0" text="Compare" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
       <Label layoutX="224.0" layoutY="24.0" text="Mahaveer Bankers">

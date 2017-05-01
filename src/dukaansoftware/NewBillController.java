@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dukaansoftware;
 
 import impl.org.controlsfx.autocompletion.AutoCompletionTextFieldBinding;
@@ -29,11 +24,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.util.Callback;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 
-/**
- * FXML Controller class
- *
- * @author geekyadars
- */
 public class NewBillController implements Initializable {
 
     @FXML

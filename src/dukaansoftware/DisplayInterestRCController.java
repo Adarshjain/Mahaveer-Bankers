@@ -35,6 +35,7 @@ public class DisplayInterestRCController implements Initializable {
     Double closingBaL = 0.00;
     String currMonth = "",currDate = "";
     int n = 0;
+    String Date1,Date2;
 
     /**
      * Initializes the controller class.
@@ -43,11 +44,15 @@ public class DisplayInterestRCController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+    }  
+    
+    public void display(){
         try {
             Class.forName("org.sqlite.JDBC");
             Connection con = DriverManager.getConnection("jdbc:sqlite:mahaveerbankers.db");
             Statement stat = con.createStatement();
-            String q = "SELECT * FROM data Where place='interest1' or place='interest2' ORDER BY date ASC";
+            String q = "SELECT * FROM data Where (place='interest1' or place='interest2') AND date BETWEEN \"" + Date1 + "\" AND \"" + Date2 + "\" ORDER BY date ASC";
             ResultSet rs = stat.executeQuery(q);
             
             Boolean first = true,firstMonth = true;
@@ -96,7 +101,12 @@ public class DisplayInterestRCController implements Initializable {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DisplayInterestRCController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
+    }
+    
+    public void setString(String d1, String d2){
+        Date1 = d1;
+        Date2 = d2;
+    }
     
     private void populate(){
         

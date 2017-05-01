@@ -32,6 +32,7 @@ public class SelectBeneficiaryController implements Initializable {
     ComboBox comboBox;
     String[] AutoComplete = {""};
     String filename = "Autocomplete.txt";
+    String Date1,Date2;
 
     /**
      * Initializes the controller class.
@@ -51,8 +52,13 @@ public class SelectBeneficiaryController implements Initializable {
             System.err.format("Exception occurred trying to read '%s'.", filename);
             System.out.println(""+e);
         }
-        comboBox.getItems().addAll( AutoComplete);
-    }    
+        comboBox.getItems().addAll(AutoComplete);
+    } 
+    
+    public void setString(String d1, String d2){
+        Date1 = d1;
+        Date2 = d2;
+    }
     
     public void go() throws IOException{
         
@@ -61,7 +67,7 @@ public class SelectBeneficiaryController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("DisplayBeneficiary.fxml"));
             Parent root = (Parent) loader.load();
             DisplayBeneficiaryController controller = loader.getController();
-            controller.setString(x);
+            controller.setString(x,Date1,Date2);
             controller.display();
             Stage stage = new Stage();
             stage.setTitle(x);
